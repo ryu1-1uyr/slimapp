@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8"/>
-    <title>チケット管理</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="container">
-    <h1>チケット管理</h1>
+<?= $this->fetch('header.phtml') ?>
     <div class="card">
         <div class="card-body">
             <h2 class="card-title">チケット詳細</h2>
@@ -25,10 +16,38 @@
                         <td><?= e($ticket['subject']) ?></td>
                     </tr>
                     </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <a href="/tickets/<?= e($ticket['id']) ?>/edit" class="btn btn-primary">編集</a>
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">削除</button>
+                        </td>
+                    </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
     </div>
-</div>
-</body>
-</html>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">チケットの削除</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>本当に削除してよろしいですか？</p>
+                </div>
+                <form method="post" action="/tickets/<?= e($ticket['id']) ?>">
+                    <input type="hidden" name="_METHOD" value="delete">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">削除</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?= $this->fetch('footer.phtml') ?>

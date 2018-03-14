@@ -14,6 +14,17 @@ return [
             'name' => 'slim-app',
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
+
+
         ],
+        // database
+        'db' => [
+            'host'   => '127.0.0.1:3306',
+            'user'   => 'ryu',
+            'pass'   => 'ryuryu1207',
+            'dbname' => 'slimapp'
+        ],
+
+
     ],
 ];

@@ -8,3 +8,11 @@
 <body>
 <div class="container">
     <h1>チケット管理</h1>
+<?php
+if ($_SESSION['user']['username'] != "") {
+    echo "<p>" . $_SESSION['user']['username'] . "でログインしています" . "</p>";
+}else{
+    echo "<p>"."ログインしていません"."</p>";
+}
+?>
+    <a href="/logoff" class="left" style="text-align: left">logOff</a>

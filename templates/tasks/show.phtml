@@ -7,12 +7,14 @@
                     <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Name</th>
                         <th>件名</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td><?= e($ticket['id']) ?></td>
+                        <td><?= e($ticket['name']) ?></td>
                         <td><?= e($ticket['subject']) ?></td>
                     </tr>
                     </tbody>
@@ -21,6 +23,7 @@
                         <td colspan="2">
                             <a href="/tickets/<?= e($ticket['id']) ?>/edit" class="btn btn-primary">編集</a>
                             <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">削除</button>
+                            <a href="/tickets" class="btn btn-primary">back</a>
                         </td>
                     </tr>
                     </tfoot>
